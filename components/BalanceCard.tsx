@@ -6,7 +6,7 @@ import { BalanceCardProps } from '../types';
 import { formatNumber } from '../utils/formatNumber';
 
 const { width } = Dimensions.get('window');
-const cardWidth = width * 0.9;
+const isSmall = width < 360;
 
 const BalanceCard: React.FC<BalanceCardProps> = ({
   icon,
@@ -19,7 +19,7 @@ const BalanceCard: React.FC<BalanceCardProps> = ({
     <View style={[styles.card, isSelected && styles.selectedCard]}>
       <View style={styles.header}>
         <Image source={icon} style={styles.icon} />
-        <Text style={styles.symbol}>{symbol} ▼</Text>
+        <Text style={styles.symbol}>{symbol} Down Arrow</Text>
       </View>
       <Text style={styles.balance}>{formatNumber(balance)}</Text>
       <Text style={styles.label}>Balance</Text>
@@ -30,11 +30,10 @@ const BalanceCard: React.FC<BalanceCardProps> = ({
 
 const styles = StyleSheet.create({
   card: {
-    width: cardWidth,
     backgroundColor: Colors.cardBackground,
     borderRadius: 16,
     padding: 16,
-    marginHorizontal: 8,
+    width: '100%',
   },
   selectedCard: {
     borderWidth: 2,
@@ -51,23 +50,23 @@ const styles = StyleSheet.create({
     marginRight: 8,
   },
   symbol: {
-    fontSize: 18,
+    fontSize: isSmall ? 16 : 18,
     fontWeight: '600',
     color: Colors.textPrimary,
   },
   balance: {
-    fontSize: 32,
+    fontSize: isSmall ? 28 : 32,
     fontWeight: 'bold',
     color: Colors.textPrimary,
     marginBottom: 4,
   },
   label: {
-    fontSize: 14,
+    fontSize: isSmall ? 13 : 14,
     color: Colors.textSecondary,
     marginBottom: 4,
   },
   usdBalance: {
-    fontSize: 16,
+    fontSize: isSmall ? 14 : 16,
     color: Colors.textSecondary,
   },
 });
