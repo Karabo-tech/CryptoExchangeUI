@@ -1,10 +1,18 @@
 // components/BuyButton.tsx
 import React from 'react';
-import { Dimensions, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { Dimensions, Platform, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import Colors from '../constants/Colors';
 
 const { width } = Dimensions.get('window');
-const buttonWidth = width * 0.9;
+const isWeb = Platform.OS === 'web';
+
+const buttonWidth = isWeb
+  ? width >= 1200
+    ? 400
+    : width >= 768
+    ? 340
+    : 300
+  : width * 0.88;
 
 const BuyButton: React.FC = () => {
   return (
@@ -21,9 +29,7 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     borderRadius: 30,
     alignItems: 'center',
-    marginHorizontal: '5%',
-    marginTop: 20,
-    marginBottom: 40,
+    marginTop: 24,
   },
   text: {
     color: Colors.buttonText,
