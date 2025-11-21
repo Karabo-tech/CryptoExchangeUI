@@ -1,7 +1,7 @@
 # Crypto Exchange UI - React Native + TypeScript
 
 ## Live APK
-[Download APK from Google Drive](https://drive.google.com/file/d/YOUR_FILE_ID/view?usp=sharing)
+[Download APK from Google Drive](https://drive.google.com/file/d/1dGFLjjuNtd_2-1YaR3sPywMMlR5LFUHM/view?usp=drive_link)
 
 ## Features
 - Pixel-perfect UI replication
